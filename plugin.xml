@@ -1,0 +1,146 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="VideoPlay" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+<name>VideoPlay</name>
+
+<js-module name="VideoPlay" src="www/VideoPlay.js"> <!--插件名字和js的路径-->
+<clobbers target="cordova.plugins.VideoPlay" />
+</js-module>
+
+<!-- android -->
+<platform name="android">
+
+<config-file parent="/*" target="res/xml/config.xml">
+
+<!--插件继承CordovaPlugin的类名，-->
+<feature name="VideoPlay">
+<param name="android-package" value="VideoPlay.VideoPlay" />
+</feature>
+
+</config-file>
+
+<config-file parent="/*" target="AndroidManifest.xml">
+
+    <!--需要添加的权限-->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.RECORD_VIDEO"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.CAMERA"/>	
+	
+</config-file>
+
+     <!--继承CordovaPlugin的类所在路径，和拷贝到工程的路径--> 
+    <!--java文件-->
+	<source-file src="src/android/src/com/hbgz/zhjy/starter/GSYVideoActivity.java" target-dir="src/com/hbgz/zhjy/starter" />
+	<source-file src="src/android/src/com/hbgz/zhjy/starter/OnTransitionListener.java" target-dir="src/com/hbgz/zhjy/starter" />
+	<source-file src="src/android/src/com/hbgz/zhjy/starter/SampleVideo.java" target-dir="src/com/hbgz/zhjy/starter" />
+	<source-file src="src/android/src/com/hbgz/zhjy/starter/SwitchVideoModel.java" target-dir="src/com/hbgz/zhjy/starter" />
+	<source-file src="src/android/src/com/hbgz/zhjy/starter/SwitchVideoTypeDialog.java" target-dir="src/com/hbgz/zhjy/starter" />
+	<source-file src="src/android/src/com/hbgz/zhjy/starter/VideoActivity.java" target-dir="src/com/hbgz/zhjy/starter" />
+	<source-file src="src/android/src/com/hbgz/zhjy/starter/MainActivity.java" target-dir="src/com/hbgz/zhjy/starter" />
+	<source-file src="src/android/src/com/hbgz/zhjy/starter/VideoPlay.java" target-dir="src/com/hbgz/zhjy/starter" />
+	
+	
+	<!--库文件和引用的依赖文件-->
+		<source-file src="src/android/libs/arm64-v8a/libijkffmpeg.so" target-dir="libs/arm64-v8a/" />
+        <source-file src="src/android/libs/arm64-v8a/libijkplayer.so" target-dir="libs/arm64-v8a/" />
+		<source-file src="src/android/libs/arm64-v8a/libijksdl.so" target-dir="libs/arm64-v8a/" />
+		
+		<source-file src="src/android/libs/armeabi/libijkffmpeg.so" target-dir="libs/armeabi/" />
+        <source-file src="src/android/libs/armeabi/libijkplayer.so" target-dir="libs/armeabi/" />
+		<source-file src="src/android/libs/armeabi/libijksdl.so" target-dir="libs/armeabi/" />
+		
+		<source-file src="src/android/libs/armeabi-v7a/libijkffmpeg.so" target-dir="libs/armeabi-v7a/" />
+        <source-file src="src/android/libs/armeabi-v7a/libijkplayer.so" target-dir="libs/armeabi-v7a/" />
+		<source-file src="src/android/libs/armeabi-v7a/libijksdl.so" target-dir="libs/armeabi-v7a/" />
+		
+		<source-file src="src/android/libs/x86/libijkffmpeg.so" target-dir="libs/x86/" />
+        <source-file src="src/android/libs/x86/libijkplayer.so" target-dir="libs/x86/" />
+		<source-file src="src/android/libs/x86/libijksdl.so" target-dir="libs/x86/" />
+		
+		<source-file src="src/android/libs/x86_64/libijkffmpeg.so" target-dir="libs/x86_64/" />
+        <source-file src="src/android/libs/x86_64/libijkplayer.so" target-dir="libs/x86_64/" />
+		<source-file src="src/android/libs/x86_64/libijksdl.so" target-dir="libs/x86_64/" />
+		
+		<framework src="com.android.support:support-v4:25.3.1" />
+		<framework src="com.android.support:appcompat-v7:25.3.1" />
+		<framework src="tv.danmaku.ijk.media:ijkplayer-java:0.8.2" />
+		<framework src="tv.danmaku.ijk.media:ijkplayer-armv7a:0.8.2" />
+		<framework src="tv.danmaku.ijk.media:ijkplayer-armv5:0.8.2" />
+		<framework src="tv.danmaku.ijk.media:ijkplayer-arm64:0.8.2" />
+		<framework src="tv.danmaku.ijk.media:ijkplayer-x86:0.8.2" />
+		<framework src="tv.danmaku.ijk.media:ijkplayer-x86_64:0.8.2" />
+		<framework src="com.android.support.constraint:constraint-layout:1.0.0" />
+		<framework src="com.shuyu:GSYVideoPlayer:2.0.4" />
+		<framework src="com.shuyu:gsyVideoPlayer-java:2.0.4" />
+		<framework src="com.shuyu:gsyVideoPlayer-armv5:2.0.4" />
+		<framework src="com.shuyu:gsyVideoPlayer-armv7a:2.0.4" />
+		<framework src="com.shuyu:gsyVideoPlayer-arm64:2.0.4" />
+		<framework src="com.shuyu:gsyVideoPlayer-x64:2.0.4" />
+		<framework src="com.shuyu:gsyVideoPlayer-x86:2.0.4" />
+		<framework src="com.squareup.okhttp3:okhttp:3.8.1" />
+		
+		
+		<!-- 资源文件-->
+		
+	    <source-file src="src/android/res/layout/actionbar_custom_view_done_discard.xml" target-dir="res/layout/" />
+		<source-file src="src/android/res/layout/actionbar_discard_button.xml" target-dir="res/layout/" />
+		<source-file src="src/android/res/layout/actionbar_done_button.xml" target-dir="res/layout/" />
+		<source-file src="src/android/res/layout/activity_gsyvideo.xml" target-dir="res/layout/" />
+		<source-file src="src/android/res/layout/activity_video.xml" target-dir="res/layout/" />
+		<source-file src="src/android/res/layout/multiselectorgrid.xml" target-dir="res/layout/" />
+		<source-file src="src/android/res/layout/sample_video.xml" target-dir="res/layout/" />
+		<source-file src="src/android/res/layout/switch_video_dialog.xml" target-dir="res/layout/" />
+		<source-file src="src/android/res/layout/switch_video_dialog_item.xml" target-dir="res/layout/" />
+		
+		
+		
+		
+		<source-file src="src/android/res/drawable/grid_background.xml" target-dir="res/drawable/" />
+		
+		<source-file src="src/android/res/drawable-hdpi/ic_action_next_item.png" target-dir="res/drawable-hdpi/" />	
+		<source-file src="src/android/res/drawable-hdpi/ic_action_previous_item.png" target-dir="res/drawable-hdpi/" />	
+		<source-file src="src/android/res/drawable-hdpi/ic_action_remove.png" target-dir="res/drawable-hdpi/" />				
+		<source-file src="src/android/res/drawable-hdpi/loading_icon.png" target-dir="res/drawable-hdpi/" />
+				
+		
+		<source-file src="src/android/res/drawable-mdpi/ic_action_discard_dark.png" target-dir="res/drawable-mdpi/" />
+		<source-file src="src/android/res/drawable-mdpi/ic_action_discard_light.png" target-dir="res/drawable-mdpi/" />
+		<source-file src="src/android/res/drawable-mdpi/ic_action_done_dark.png" target-dir="res/drawable-mdpi/" />
+		<source-file src="src/android/res/drawable-mdpi/ic_action_done_light.png" target-dir="res/drawable-mdpi/" />
+		<source-file src="src/android/res/drawable-mdpi/ic_action_next_item.png" target-dir="res/drawable-mdpi/" />
+		<source-file src="src/android/res/drawable-mdpi/ic_action_previous_item.png" target-dir="res/drawable-mdpi/" />
+		<source-file src="src/android/res/drawable-mdpi/ic_action_remove.png" target-dir="res/drawable-mdpi/" />
+		
+		
+		<source-file src="src/android/res/drawable-xhdpi/ic_action_discard_dark.png" target-dir="res/drawable-xhdpi/" />
+		<source-file src="src/android/res/drawable-xhdpi/ic_action_discard_light.png" target-dir="res/drawable-xhdpi/" />
+		<source-file src="src/android/res/drawable-xhdpi/ic_action_done_dark.png" target-dir="res/drawable-xhdpi/" />
+		<source-file src="src/android/res/drawable-xhdpi/ic_action_done_light.png" target-dir="res/drawable-xhdpi/" />
+		<source-file src="src/android/res/drawable-xhdpi/ic_action_next_item.png" target-dir="res/drawable-xhdpi/" />
+		<source-file src="src/android/res/drawable-xhdpi/ic_action_previous_item.png" target-dir="res/drawable-xhdpi/" />
+		<source-file src="src/android/res/drawable-xhdpi/ic_action_remove.png" target-dir="res/drawable-xhdpi/" />
+		
+		<source-file src="src/android/res/drawable-xxhdpi/ic_action_next_item.png" target-dir="res/drawable-xxhdpi/" />
+		<source-file src="src/android/res/drawable-xxhdpi/ic_action_previous_item.png" target-dir="res/drawable-xxhdpi/" />
+		<source-file src="src/android/res/drawable-xxhdpi/ic_action_remove.png" target-dir="res/drawable-xxhdpi/" />
+		
+		
+
+</platform>
+
+</plugin>
